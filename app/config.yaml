@@ -6,3 +6,4 @@ model:
   threshold: 0.04
   labels: 1
   dtype: float32
+  batch_size: 8

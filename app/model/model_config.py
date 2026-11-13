@@ -16,6 +16,7 @@ class ModelConfig:
     max_length: int
     threshold: float
     dtype: str
+    batch_size: int
     labels: int = 1
     
 
