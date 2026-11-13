@@ -1,6 +1,6 @@
 model:
   name: deepvk/deberta-v1-distill
-  path: /home/ydlawq/SuicideDetection/app/weights/best_model_weights.pth
+  path: weights/best_model_weights.pth
   device: cpu
   max_length: 512
   threshold: 0.04
