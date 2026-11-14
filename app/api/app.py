@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 import asyncio
 from fastapi import FastAPI, Request
-from logging_setup import setup_logger
+from shared.setup_logger import setup_logger
 from model.predictor import Model
 from pathlib import Path
 from model.model_config import load_config

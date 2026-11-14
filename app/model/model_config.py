@@ -24,9 +24,6 @@ class ModelConfig:
 class Config:
     model: ModelConfig
 
-
-
-
 def load_config(path: Optional[str] = None)-> ModelConfig:
     
     if path is None:

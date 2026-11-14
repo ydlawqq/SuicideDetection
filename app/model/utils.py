@@ -2,7 +2,6 @@ from torch.utils.data import Dataset
 import re
 import emoji
 
-
 def prepare(text):         
     clean_tags = re.sub(r'<emoji>\s*(.*?)\s*</emoji>', lambda m: f":{m.group(1).strip().replace(' ', '_').lower()}:", text)
     emojified = emoji.emojize(clean_tags, language='en')

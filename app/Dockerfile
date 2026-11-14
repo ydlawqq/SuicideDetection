@@ -4,17 +4,17 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-COPY pyproject.toml uv.lock ./
+COPY app/pyproject.toml app/uv.lock ./
 RUN uv export --frozen --no-emit-package torch -o /tmp/req.txt \
 && uv pip install --system -r /tmp/req.txt
 
-RUN python -c "import torch; print('torch', torch.__version__, '| cuda:', torch.version.cuda)"
 
 
-COPY model/ ./model/ 
-COPY api/ ./api/
-COPY worker.py logging_setup.py config.yaml ./
-COPY weights/ ./weights/
+COPY shared ./shared/
+COPY app/model/ ./model/ 
+COPY app/api/ ./api/
+COPY app/worker.py app/config.yaml ./
+COPY app/weights/ ./weights/
 
 ENV PATH="/app/.venv/bin:$PATH" \
     HF_HOME=/app/hf_cache \

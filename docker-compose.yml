@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface:Z
+    environment:
+      - HF_HOME=/root/.cache/huggingface
+    container_name: api
+
+  bot:
+    build: 
+      context: .
+      dockerfile: bot/Dockerfile
+    volumes:
+      - ./bot/cfw.session:/app/cfw.session:Z
+      - ~/.andro_cfw/key:/root/.andro_cfw/key:Z
+    container_name: bot
+    environment: 
+      - BOT_TOKEN=${BOT_TOKEN}
+      - API_URL=http://api:8000
+    depends_on: 
+      - api
+
+    
