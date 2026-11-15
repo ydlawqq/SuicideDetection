@@ -70,5 +70,6 @@ class BatchWorker():
         while not self.queue.empty():
             _, fut = self.queue.get_nowait()
             fut.set_exception(RuntimeError('Остановка сервиса'))
-        for _, fut in self._inflight:
-            fut.set_exception(RuntimeError('Остановка сервиса'))
+        if self._inflight:
+            for _, fut in self._inflight:
+                fut.set_exception(RuntimeError('Остановка сервиса'))
